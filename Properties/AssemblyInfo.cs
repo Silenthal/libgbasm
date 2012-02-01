@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LibGBasm")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A library to disassemble binaries targeting the Sharp LR35902.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("LibGBasm")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright ©  2012 Silenthal")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
