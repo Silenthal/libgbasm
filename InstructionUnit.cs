@@ -8,7 +8,7 @@
 	/// <summary>
 	/// The type of a GBArgument. Depending on the type of argument, the values within are interpreted differently.
 	/// </summary>
-	public enum GBArgumentType { None, Byte, Word, Conditional, RegisterSingle, RegisterDouble }
+	public enum GBArgumentType { None, Bit, Byte, Word, Conditional, RegisterSingle, RegisterDouble }
 
 	/// <summary>
 	/// Represents a single register.
