@@ -2,9 +2,9 @@
 {
 	public class GBASM
 	{
-		public static bool GetGBInstruction(byte[] binaryFile, int virtualOffset, int fileOffset, ref InstructionUnit output)
+		public static bool GetGBInstruction(byte[] binaryFile, int virtualOffset, int fileOffset, ref GBInstructionUnit output)
 		{
-			output = new InstructionUnit();
+			output = new GBInstructionUnit();
 			if (binaryFile == null || fileOffset > binaryFile.Length - 1) return false;
 			byte inst = binaryFile[fileOffset];
 			if (inst == 0xCB)
@@ -13,25 +13,25 @@
 				output = GBInstructions.CBInstructionUnitTable[binaryFile[fileOffset]];
 			}
 			else output = GBInstructions.InstructionUnitTable[binaryFile[fileOffset]];
-			output.fileOffset = fileOffset;
-			output.virtualOffset = fileOffset + virtualOffset;
-			switch (output.instSize)
+			output.BinaryOffset = fileOffset;
+			output.OrgOffset = fileOffset + virtualOffset;
+			switch (output.InstSize)
 			{
 				case 2:
-					switch (output.arg1.argType)
+					switch (output.Arg1.ArgType)
 					{
 						case ArgumentType.Byte:
-							output.arg1.numberArg = binaryFile[fileOffset + 1];
+							output.Arg1.NumberArg = binaryFile[fileOffset + 1];
 							break;
 						default:
 							break;
 					}
 					if (output.ArgCount == 2)
 					{
-						switch (output.arg2.argType)
+						switch (output.Arg2.ArgType)
 						{
 							case ArgumentType.Byte:
-								output.arg2.numberArg = binaryFile[fileOffset + 1];
+								output.Arg2.NumberArg = binaryFile[fileOffset + 1];
 								break;
 							default:
 								break;
@@ -39,13 +39,13 @@
 					}
 					break;
 				case 3:
-					if (output.arg1.argType == ArgumentType.Word)
+					if (output.Arg1.ArgType == ArgumentType.Word)
 					{
-						output.arg1.numberArg = System.BitConverter.ToUInt16(binaryFile, fileOffset + 1);
+						output.Arg1.NumberArg = System.BitConverter.ToUInt16(binaryFile, fileOffset + 1);
 					}
-					else if (output.ArgCount == 2 && output.arg2.argType == ArgumentType.Word)
+					else if (output.ArgCount == 2 && output.Arg2.ArgType == ArgumentType.Word)
 					{
-						output.arg2.numberArg = System.BitConverter.ToUInt16(binaryFile, fileOffset + 1);
+						output.Arg2.NumberArg = System.BitConverter.ToUInt16(binaryFile, fileOffset + 1);
 					}
 					break;
 				default:
