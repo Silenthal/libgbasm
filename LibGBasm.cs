@@ -18,7 +18,7 @@
 			if (inst == 0xCB)
 			{
 				if (RealOffset > BinaryFile.Length - 2) return false;
-				output = GBInstructions.CBInstructionUnitTable[BinaryFile[RealOffset]];
+				output = GBInstructions.CBInstructionUnitTable[BinaryFile[RealOffset + 1]];
 			}
 			else output = GBInstructions.InstructionUnitTable[BinaryFile[RealOffset]];
 			output.Offset = RealOffset;
