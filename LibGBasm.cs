@@ -21,9 +21,9 @@
 				output = GBInstructions.CBInstructionUnitTable[BinaryFile[RealOffset]];
 			}
 			else output = GBInstructions.InstructionUnitTable[BinaryFile[RealOffset]];
-			output.RealOffset = RealOffset;
-			output.OrgOffset = RealOffset + OrgOffset;
-			if (output.RealOffset + output.InstSize > BinaryFile.Length - 1) return false;
+			output.Offset = RealOffset;
+			output.Address = RealOffset + OrgOffset;
+			if (output.Offset + output.InstSize > BinaryFile.Length - 1) return false;
 			if (output.InstSize == 2)
 			{
 				if (output.Arg1.ArgType == GBArgumentType.Byte)
