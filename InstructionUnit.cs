@@ -29,11 +29,11 @@
 	public struct GBInstructionUnit
 	{
 		/// <summary>
-		/// The actual offset if the instruction in the binary.
+		/// The address of the instruction in the binary.
 		/// </summary>
-		public int BinaryOffset;
+		public int RealOffset;
 		/// <summary>
-		/// The address assigned to the beginning of the binary where the instruction originated.
+		/// The address of the instruction in the complete file, offset from the origin address.
 		/// </summary>
 		public int OrgOffset;
 		/// <summary>
