@@ -8,20 +8,20 @@
 	/// <summary>
 	/// The type of a GBArgument. Depending on the type of argument, the values within are interpreted differently.
 	/// </summary>
-	public enum ArgumentType { None, Byte, Word, Conditional, RegisterSingle, RegisterDouble }
+	public enum GBArgumentType { None, Byte, Word, Conditional, RegisterSingle, RegisterDouble }
 
 	/// <summary>
 	/// Represents a single register.
 	/// </summary>
-	public enum RegisterSingle { a, b, c, d, e, h, l }
+	public enum GBRegisterSingle { a, b, c, d, e, h, l }
 
 	//Represents a register pair.
-	public enum RegisterDouble { af, bc, de, hl, sp }
+	public enum GBRegisterDouble { af, bc, de, hl, sp }
 
 	/// <summary>
 	/// Represents a conditional statement.
 	/// </summary>
-	public enum Conditional { nz, z, nc, c }
+	public enum GBConditional { nz, z, nc, c }
 
 	/// <summary>
 	/// Represents a single GB instruction.
@@ -66,7 +66,7 @@
 		/// <summary>
 		/// The type of argument.
 		/// </summary>
-		public ArgumentType ArgType;
+		public GBArgumentType ArgType;
 		/// <summary>
 		/// The number value of the argument, if it has one.
 		/// </summary>
@@ -82,14 +82,14 @@
 		/// <summary>
 		/// The RegisterSingle value of the argument, if it has one.
 		/// </summary>
-		public RegisterSingle RegSingleArg;
+		public GBRegisterSingle RegSingleArg;
 		/// <summary>
 		/// The RegisterDouble value of the argument, if it has one.
 		/// </summary>
-		public RegisterDouble RegDoubleArg;
+		public GBRegisterDouble RegDoubleArg;
 		/// <summary>
 		/// The Conditional value of the argument, if it has one.
 		/// </summary>
-		public Conditional CondArg;
+		public GBConditional CondArg;
 	}
 }
