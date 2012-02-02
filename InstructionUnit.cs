@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Represents the type of instruction.
 	/// </summary>
-	public enum InstructionType { invalid, adc, add, and, bit, call, ccf, cb, cp, cpl, ei, daa, dec, di, halt, inc, jp, jr, ld, ldi, ldd, ldhl, nop, or, pop, push, res, ret, reti, rl, rla, rlc, rlca, rot, rr, rra, rrc, rrca, rst, sbc, scf, set, sla, sra, srl, stop, sub, swap, xor }
+	public enum InstructionType { adc, add, and, bit, call, ccf, cb, cp, cpl, db, ei, daa, dec, di, halt, inc, jp, jr, ld, ldi, ldd, ldhl, nop, or, pop, push, res, ret, reti, rl, rla, rlc, rlca, rot, rr, rra, rrc, rrca, rst, sbc, scf, set, sla, sra, srl, stop, sub, swap, xor }
 
 	/// <summary>
 	/// The type of a GBArgument. Depending on the type of argument, the values within are interpreted differently.
