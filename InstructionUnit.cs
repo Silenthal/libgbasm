@@ -2,7 +2,7 @@
 {
 	public enum InstructionType { invalid, adc, add, and, bit, call, ccf, cb, cp, cpl, ei, daa, dec, di, halt, inc, jp, jr, ld, ldi, ldd, ldhl, nop, or, pop, push, res, ret, reti, rl, rla, rlc, rlca, rot, rr, rra, rrc, rrca, rst, sbc, scf, set, sla, sra, srl, stop, sub, swap, xor }
 
-	public enum ArgumentType { None, MemMap, RegisterDoubleMemMap, RegisterSingleMemMap, Conditional, Register, RegisterPair, Byte, MemMapFFByte, Word, Offset }
+	public enum ArgumentType { None, Byte, Word, Conditional, RegisterSingle, RegisterDouble }
 
 	public enum RegisterSingle { a, b, c, d, e, h, l }
 
@@ -24,8 +24,9 @@
 	public struct Argument
 	{
 		public ArgumentType argType;
-		public byte byteArg;
-		public ushort shortArg;
+		public int numberArg;
+		public bool isMemMap;
+		public bool isFFNNInstruction;
 		public RegisterSingle rsArg;
 		public RegisterDouble rdArg;
 		public Conditional cArg;

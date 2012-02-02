@@ -37,7 +37,7 @@
     <Compile Include="LibGBasm.cs" />
     <Compile Include="InstructionUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Z80Instructions.cs" />
+    <Compile Include="GBInstructions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
