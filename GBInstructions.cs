@@ -305,7 +305,7 @@ namespace LibGBasm
 			new GBInstructionUnit() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstructionUnit() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstructionUnit() { InstSize = 1, ArgCount = 1, InstType = InstructionType.push, Arg1 = RegHL },
-			new GBInstructionUnit() { InstSize = 2, ArgCount = 2, InstType = InstructionType.and, Arg1 = ByteArg },
+			new GBInstructionUnit() { InstSize = 2, ArgCount = 1, InstType = InstructionType.and, Arg1 = ByteArg },
 			new GBInstructionUnit() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x20 } },
 			new GBInstructionUnit() { InstSize = 2, ArgCount = 2, InstType = InstructionType.add, Arg1 = RegSP, Arg2 = ByteArg },
 			new GBInstructionUnit() { InstSize = 1, ArgCount = 1, InstType = InstructionType.jp, Arg1 = RegHL },
