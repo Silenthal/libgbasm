@@ -41,7 +41,7 @@ namespace LibGBasm
 	/// <summary>
 	/// Represents a single GB instruction.
 	/// </summary>
-	public struct GBInstructionUnit
+	public struct GBInstruction
 	{
 		/// <summary>
 		/// The offset of the instruction in the binary.

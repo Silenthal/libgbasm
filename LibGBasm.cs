@@ -21,44 +21,45 @@ namespace LibGBasm
 		/// Given a binary file and the appropriate offsets, constructs a GBInstructionUnit containing information about the instruction and its arguments.
 		/// </summary>
 		/// <param name="BinaryFile">The file to read from.</param>
-		/// <param name="OrgOffset">The origin address of the file.</param>
-		/// <param name="RealOffset">The offset into the file to read from.</param>
-		/// <param name="output">The GBInstructionUnit to write the information to.</param>
-		/// <returns>The success of the operation. Returns false if the information fetching went wrong for any reason.</returns>
-		public static bool GetGBInstruction(byte[] BinaryFile, int OrgOffset, int RealOffset, ref GBInstructionUnit output)
+		/// <param name="Org">The origin address of the file.</param>
+		/// <param name="Offset">The offset into the file to read from.</param>
+		/// <param name="OutInstruction">The GBInstruction to write the information to.</param>
+		/// <returns>The success of the operation. Returns false if the information fetching went wrong for any reason
+		/// </returns>
+		public static bool GetGBInstruction(byte[] BinaryFile, int Org, int Offset, ref GBInstruction OutInstruction)
 		{
-			output = new GBInstructionUnit();
-			if (BinaryFile == null || RealOffset > BinaryFile.Length - 1) return false;
-			byte inst = BinaryFile[RealOffset];
+			OutInstruction = new GBInstruction();
+			if (BinaryFile == null || Offset > BinaryFile.Length - 1) return false;
+			byte inst = BinaryFile[Offset];
 			if (inst == 0xCB)
 			{
-				if (RealOffset > BinaryFile.Length - 2) return false;
-				output = GBInstructions.CBInstructionUnitTable[BinaryFile[RealOffset + 1]];
+				if (Offset > BinaryFile.Length - 2) return false;
+				OutInstruction = GBInstructions.CBInstructionUnitTable[BinaryFile[Offset + 1]];
 			}
-			else output = GBInstructions.InstructionUnitTable[BinaryFile[RealOffset]];
-			output.Offset = RealOffset;
-			output.Address = RealOffset + OrgOffset;
-			if (output.Offset + output.InstSize > BinaryFile.Length - 1) return false;
-			if (output.InstSize == 2)
+			else OutInstruction = GBInstructions.InstructionUnitTable[BinaryFile[Offset]];
+			OutInstruction.Offset = Offset;
+			OutInstruction.Address = Offset + Org;
+			if (OutInstruction.Offset + OutInstruction.InstSize > BinaryFile.Length - 1) return false;
+			if (OutInstruction.InstSize == 2)
 			{
-				if (output.Arg1.ArgType == GBArgumentType.Byte)
+				if (OutInstruction.Arg1.ArgType == GBArgumentType.Byte)
 				{
-					output.Arg1.NumberArg = BinaryFile[RealOffset + 1];
+					OutInstruction.Arg1.NumberArg = BinaryFile[Offset + 1];
 				}
-				else if (output.ArgCount == 2 && output.Arg2.ArgType == GBArgumentType.Byte)
+				else if (OutInstruction.ArgCount == 2 && OutInstruction.Arg2.ArgType == GBArgumentType.Byte)
 				{
-					output.Arg2.NumberArg = BinaryFile[RealOffset + 1];
+					OutInstruction.Arg2.NumberArg = BinaryFile[Offset + 1];
 				}
 			}
-			else if (output.InstSize == 3)
+			else if (OutInstruction.InstSize == 3)
 			{
-				if (output.Arg1.ArgType == GBArgumentType.Word)
+				if (OutInstruction.Arg1.ArgType == GBArgumentType.Word)
 				{
-					output.Arg1.NumberArg = System.BitConverter.ToUInt16(BinaryFile, RealOffset + 1);
+					OutInstruction.Arg1.NumberArg = System.BitConverter.ToUInt16(BinaryFile, Offset + 1);
 				}
-				else if (output.ArgCount == 2 && output.Arg2.ArgType == GBArgumentType.Word)
+				else if (OutInstruction.ArgCount == 2 && OutInstruction.Arg2.ArgType == GBArgumentType.Word)
 				{
-					output.Arg2.NumberArg = System.BitConverter.ToUInt16(BinaryFile, RealOffset + 1);
+					OutInstruction.Arg2.NumberArg = System.BitConverter.ToUInt16(BinaryFile, Offset + 1);
 				}
 			}
 			return true;
