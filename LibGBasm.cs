@@ -42,22 +42,22 @@ namespace LibGBasm
 			if (OutInstruction.Offset + OutInstruction.InstSize > BinaryFile.Length - 1) return false;
 			if (OutInstruction.InstSize == 2)
 			{
-				if (OutInstruction.Arg1.ArgType == GBArgumentType.Byte)
+				if (OutInstruction.Arg1.ArgType == GBArgumentType.Byte || OutInstruction.Arg1.ArgType == GBArgumentType.MemMapByte)
 				{
 					OutInstruction.Arg1.NumberArg = BinaryFile[Offset + 1];
 				}
-				else if (OutInstruction.ArgCount == 2 && OutInstruction.Arg2.ArgType == GBArgumentType.Byte)
+				else if (OutInstruction.ArgCount == 2 && (OutInstruction.Arg2.ArgType == GBArgumentType.Byte || OutInstruction.Arg1.ArgType == GBArgumentType.MemMapByte))
 				{
 					OutInstruction.Arg2.NumberArg = BinaryFile[Offset + 1];
 				}
 			}
 			else if (OutInstruction.InstSize == 3)
 			{
-				if (OutInstruction.Arg1.ArgType == GBArgumentType.Word)
+				if (OutInstruction.Arg1.ArgType == GBArgumentType.Word || OutInstruction.Arg1.ArgType == GBArgumentType.MemMapWord)
 				{
 					OutInstruction.Arg1.NumberArg = System.BitConverter.ToUInt16(BinaryFile, Offset + 1);
 				}
-				else if (OutInstruction.ArgCount == 2 && OutInstruction.Arg2.ArgType == GBArgumentType.Word)
+				else if (OutInstruction.ArgCount == 2 && (OutInstruction.Arg2.ArgType == GBArgumentType.Word || OutInstruction.Arg2.ArgType == GBArgumentType.MemMapWord))
 				{
 					OutInstruction.Arg2.NumberArg = System.BitConverter.ToUInt16(BinaryFile, Offset + 1);
 				}
