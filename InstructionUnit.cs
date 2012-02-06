@@ -23,7 +23,7 @@ namespace LibGBasm
 	/// <summary>
 	/// The type of a GBArgument. Depending on the type of argument, the values within are interpreted differently.
 	/// </summary>
-	public enum GBArgumentType { None, Bit, Byte, Word, Conditional, RegisterSingle, RegisterDouble }
+	public enum GBArgumentType { None, Bit, Byte, MemMapByte, Word, MemMapWord, Conditional, RegisterSingle, MemMapRegisterSingle, RegisterDouble, MemMapRegisterDouble }
 
 	/// <summary>
 	/// Represents a single register.
@@ -86,14 +86,6 @@ namespace LibGBasm
 		/// The number value of the argument, if it has one.
 		/// </summary>
 		public int NumberArg;
-		/// <summary>
-		/// Represents whether the argument is referring to a location in the memory map.
-		/// </summary>
-		public bool IsMemMap;
-		/// <summary>
-		/// Represents whether the number argument is being interpreted as a location in the $FF00-$FFFF range.
-		/// </summary>
-		public bool IsFFNNInst;
 		/// <summary>
 		/// The RegisterSingle value of the argument, if it has one.
 		/// </summary>

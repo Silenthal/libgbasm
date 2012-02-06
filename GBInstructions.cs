@@ -17,10 +17,10 @@ namespace LibGBasm
 {
 	internal class GBInstructions
 	{
-		private static GBArgument BCMap = new GBArgument() { ArgType = GBArgumentType.RegisterDouble, IsMemMap = true, RegDoubleArg = GBRegisterDouble.bc };
-		private static GBArgument DEMap = new GBArgument() { ArgType = GBArgumentType.RegisterDouble, IsMemMap = true, RegDoubleArg = GBRegisterDouble.de };
-		private static GBArgument HLMap = new GBArgument() { ArgType = GBArgumentType.RegisterDouble, IsMemMap = true, RegDoubleArg = GBRegisterDouble.hl };
-		private static GBArgument CMap = new GBArgument() { ArgType = GBArgumentType.RegisterSingle, IsMemMap = true, RegSingleArg = GBRegisterSingle.c };
+		private static GBArgument BCMap = new GBArgument() { ArgType = GBArgumentType.MemMapRegisterDouble, RegDoubleArg = GBRegisterDouble.bc };
+		private static GBArgument DEMap = new GBArgument() { ArgType = GBArgumentType.MemMapRegisterDouble, RegDoubleArg = GBRegisterDouble.de };
+		private static GBArgument HLMap = new GBArgument() { ArgType = GBArgumentType.MemMapRegisterDouble, RegDoubleArg = GBRegisterDouble.hl };
+		private static GBArgument CMap = new GBArgument() { ArgType = GBArgumentType.MemMapRegisterSingle, RegSingleArg = GBRegisterSingle.c };
 
 		private static GBArgument NCCond = new GBArgument() { ArgType = GBArgumentType.Conditional, CondArg = GBConditional.nc };
 		private static GBArgument CCond = new GBArgument() { ArgType = GBArgumentType.Conditional, CondArg = GBConditional.c };
@@ -43,9 +43,9 @@ namespace LibGBasm
 
 		private static GBArgument ByteArg = new GBArgument() { ArgType = GBArgumentType.Byte };
 		private static GBArgument WordArg = new GBArgument() { ArgType = GBArgumentType.Word };
-		private static GBArgument MemMapArg = new GBArgument() { ArgType = GBArgumentType.Word, IsMemMap = true };
+		private static GBArgument MemMapArg = new GBArgument() { ArgType = GBArgumentType.MemMapWord };
 
-		private static GBArgument MemMapByteArg = new GBArgument() { ArgType = GBArgumentType.Byte, IsMemMap = true, IsFFNNInst = true };
+		private static GBArgument MemMapByteArg = new GBArgument() { ArgType = GBArgumentType.MemMapByte };
 
 		private static GBArgument BitArg0 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 0 };
 		private static GBArgument BitArg1 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 1 };
