@@ -46,7 +46,7 @@ namespace LibGBasm
 				{
 					OutInstruction.Arg1.NumberArg = BinaryFile[Offset + 1];
 				}
-				else if (OutInstruction.ArgCount == 2 && (OutInstruction.Arg2.ArgType == GBArgumentType.Byte || OutInstruction.Arg1.ArgType == GBArgumentType.MemMapByte))
+				else if (OutInstruction.ArgCount == 2 && (OutInstruction.Arg2.ArgType == GBArgumentType.Byte || OutInstruction.Arg2.ArgType == GBArgumentType.MemMapByte))
 				{
 					OutInstruction.Arg2.NumberArg = BinaryFile[Offset + 1];
 				}
