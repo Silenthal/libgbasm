@@ -45,16 +45,14 @@ namespace LibGBasm
 		private static GBArgument WordArg = new GBArgument() { ArgType = GBArgumentType.Word };
 		private static GBArgument MemMapArg = new GBArgument() { ArgType = GBArgumentType.MemMapWord };
 
-		private static GBArgument MemMapByteArg = new GBArgument() { ArgType = GBArgumentType.MemMapByte };
-
-		private static GBArgument BitArg0 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 0 };
-		private static GBArgument BitArg1 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 1 };
-		private static GBArgument BitArg2 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 2 };
-		private static GBArgument BitArg3 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 3 };
-		private static GBArgument BitArg4 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 4 };
-		private static GBArgument BitArg5 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 5 };
-		private static GBArgument BitArg6 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 6 };
-		private static GBArgument BitArg7 = new GBArgument() { ArgType = GBArgumentType.Bit, NumberArg = 7 };
+		private static GBArgument BitArg0 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 0 };
+		private static GBArgument BitArg1 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 1 };
+		private static GBArgument BitArg2 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 2 };
+		private static GBArgument BitArg3 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 3 };
+		private static GBArgument BitArg4 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 4 };
+		private static GBArgument BitArg5 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 5 };
+		private static GBArgument BitArg6 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 6 };
+		private static GBArgument BitArg7 = new GBArgument() { ArgType = GBArgumentType.Bit, NumArg = 7 };
 
 		#region Regular Instructions
 
@@ -86,7 +84,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.dec, Arg1 = RegD },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegD, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.rla },
-			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.jr, Arg1 = ByteArg },
+			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.jr, Arg1 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.add, Arg1 = RegHL, Arg2 = RegDE },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegA, Arg2 = DEMap },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.dec, Arg1 = RegDE },
@@ -95,7 +93,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegE, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.rra },
 			//20-2F
-			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = NZCond, Arg2 = ByteArg },
+			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = NZCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegHL, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ldi, Arg1 = HLMap, Arg2 = RegA },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.inc, Arg1 = RegHL },
@@ -103,7 +101,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.dec, Arg1 = RegL },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegH, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.daa },
-			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = ZCond, Arg2 = ByteArg },
+			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = ZCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.add, Arg1 = RegHL, Arg2 = RegHL },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ldi, Arg1 = RegA, Arg2 = HLMap },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.dec, Arg1 = RegHL },
@@ -112,7 +110,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegL, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.cpl },
 			//30-3F
-			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = NCCond, Arg2 = ByteArg },
+			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = NCCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegSP, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ldd, Arg1 = HLMap, Arg2 = RegA },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.inc, Arg1 = RegSP },
@@ -120,7 +118,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.dec, Arg1 = HLMap },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = HLMap, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.scf },
-			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = CCond, Arg2 = ByteArg },
+			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.jr, Arg1 = CCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.add, Arg1 = RegHL, Arg2 = RegSP },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ldd, Arg1 = RegA, Arg2 = HLMap },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.dec, Arg1 = RegSP },
@@ -214,14 +212,14 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.adc, Arg1 = RegA, Arg2 = HLMap },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.adc, Arg1 = RegA, Arg2 = RegA },
 			//90-9F
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegB },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegC },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegD },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegE },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegH },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegL },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = HLMap },
-			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sub, Arg1 = RegA, Arg2 = RegA },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegB },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegC },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegD },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegE },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegH },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegL },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = HLMap },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.sub, Arg1 = RegA },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sbc, Arg1 = RegA, Arg2 = RegB },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sbc, Arg1 = RegA, Arg2 = RegC },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.sbc, Arg1 = RegA, Arg2 = RegD },
@@ -272,7 +270,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.call, Arg1 = NZCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.push, Arg1 = RegBC },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.add, Arg1 = RegA, Arg2 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x00 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x00 } },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.ret, Arg1 = ZCond },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.ret },
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.jp, Arg1 = ZCond, Arg2 = WordArg },
@@ -280,7 +278,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.call, Arg1 = ZCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 3, ArgCount = 1, InstType = InstructionType.call, Arg1 = WordArg },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.adc, Arg1 = RegA, Arg2 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x08 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x08 } },
 			//D0-DF
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.ret, Arg1 = NCCond },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.pop, Arg1 = RegDE },
@@ -289,7 +287,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.call, Arg1 = NCCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.push, Arg1 = RegDE },
 			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.sub, Arg1 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x10 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x10 } },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.ret, Arg1 = CCond },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.reti },
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.jp, Arg1 = CCond, Arg2 = WordArg },
@@ -297,16 +295,16 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.call, Arg1 = CCond, Arg2 = WordArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.sbc, Arg1 = RegA, Arg2 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x18 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x18 } },
 			//E0-EF
-			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = MemMapByteArg, Arg2 = RegA },
+			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = MemMapArg, Arg2 = RegA },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.pop, Arg1 = RegHL },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ld, Arg1 = CMap, Arg2 = RegA },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.push, Arg1 = RegHL },
 			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.and, Arg1 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x20 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x20 } },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.add, Arg1 = RegSP, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.jp, Arg1 = RegHL },
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.ld, Arg1 = MemMapArg, Arg2 = RegA },
@@ -314,16 +312,16 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.xor, Arg1 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x28 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x28 } },
 			//F0-FF
-			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegA, Arg2 = MemMapByteArg },
+			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegA, Arg2 = MemMapArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.pop, Arg1 = RegAF },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegA, Arg2 = CMap },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.di },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.push, Arg1 = RegAF },
 			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.or, Arg1 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x30 } },
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x30 } },
 			new GBInstruction() { InstSize = 2, ArgCount = 2, InstType = InstructionType.ldhl, Arg1 = RegSP, Arg2 = ByteArg },
 			new GBInstruction() { InstSize = 1, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegSP, Arg2 = RegHL },
 			new GBInstruction() { InstSize = 3, ArgCount = 2, InstType = InstructionType.ld, Arg1 = RegA, Arg2 = MemMapArg },
@@ -331,7 +329,7 @@ namespace LibGBasm
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 1, ArgCount = 0, InstType = InstructionType.db },
 			new GBInstruction() { InstSize = 2, ArgCount = 1, InstType = InstructionType.cp, Arg1 = ByteArg },
-			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumberArg = 0x38 } }
+			new GBInstruction() { InstSize = 1, ArgCount = 1, InstType = InstructionType.rst, Arg1 = new GBArgument(){ ArgType = GBArgumentType.Byte, NumArg = 0x38 } }
 		};
 
 		#endregion Regular Instructions

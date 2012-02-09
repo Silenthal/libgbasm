@@ -18,12 +18,12 @@ namespace LibGBasm
 	/// <summary>
 	/// Represents the type of instruction.
 	/// </summary>
-	public enum InstructionType { adc, add, and, bit, call, ccf, cb, cp, cpl, db, ei, daa, dec, di, halt, inc, jp, jr, ld, ldi, ldd, ldhl, nop, or, pop, push, res, ret, reti, rl, rla, rlc, rlca, rot, rr, rra, rrc, rrca, rst, sbc, scf, set, sla, sra, srl, stop, sub, swap, xor }
+	public enum InstructionType { adc, add, and, bit, call, ccf, cb, cp, cpl, db, dw, ei, daa, dec, di, halt, inc, jp, jr, ld, ldi, ldd, ldhl, nop, or, pop, push, res, ret, reti, rl, rla, rlc, rlca, rot, rr, rra, rrc, rrca, rst, sbc, scf, set, sla, sra, srl, stop, sub, swap, xor }
 
 	/// <summary>
 	/// The type of a GBArgument. Depending on the type of argument, the values within are interpreted differently.
 	/// </summary>
-	public enum GBArgumentType { None, Bit, Byte, MemMapByte, Word, MemMapWord, Conditional, RegisterSingle, MemMapRegisterSingle, RegisterDouble, MemMapRegisterDouble }
+	public enum GBArgumentType { None, Bit, Byte, Word, MemMapWord, Conditional, RegisterSingle, MemMapRegisterSingle, RegisterDouble, MemMapRegisterDouble }
 
 	/// <summary>
 	/// Represents a single register.
@@ -44,13 +44,13 @@ namespace LibGBasm
 	public struct GBInstruction
 	{
 		/// <summary>
-		/// The offset of the instruction in the binary.
+		/// The bank containing the instruction.
 		/// </summary>
-		public int Offset;
+		public byte Bank;
 		/// <summary>
-		/// The address of the instruction in the complete file, offset from the origin address.
+		/// The address of the instruction.
 		/// </summary>
-		public int Address;
+		public ushort Address;
 		/// <summary>
 		/// The size of the argument, in bytes.
 		/// </summary>
@@ -83,9 +83,9 @@ namespace LibGBasm
 		/// </summary>
 		public GBArgumentType ArgType;
 		/// <summary>
-		/// The number value of the argument, if it has one.
+		/// The number value of the argument.
 		/// </summary>
-		public int NumberArg;
+		public ushort NumArg;
 		/// <summary>
 		/// The RegisterSingle value of the argument, if it has one.
 		/// </summary>
