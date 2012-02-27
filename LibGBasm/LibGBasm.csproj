@@ -39,15 +39,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GBInstructions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="README.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="COPYING" />
-    <None Include="COPYING.LESSER" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
